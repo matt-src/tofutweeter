@@ -1,25 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"></html>
   <head>
     <!-- Meta Information -->
     <title>Tweeter - Home Page</title>
-
+    <!-- Include JQuery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- External CSS -->
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <!-- External Custom Font-->
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,700,700i" rel="stylesheet">
     <!-- App CSS -->
     <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
 
     <!-- External JS -->
     <script type="text/javascript" src="/vendor/jquery-2.2.3.min.js"></script>
+    <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
 
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/app.js"></script>
+
+    <!-- Include JSON-->
+    <script type="text/javascript" language="javascript" src="initial-tweets.json"></script> 
+
   </head>
 
   <body>
+      <script>
+          //Add event handler to document to trigger when it is ready
+        $(document).ready(function() {
+        console.log("Our document is ready")
+
+        $("textarea").keydown(function(event) {
+        console.log("Keydown triggered"); 
+
+        let tmp = $("textarea").val().length;
+        console.log("textlength is " + tmp)
+        if((140 - tmp) < 0){
+          $(".counter").css("color", "red")
+        }
+        else{
+          $(".counter").css("color", "")
+        }
+        $(".counter").text(140 - tmp)
+        })
+        
+      });
+      </script>
 
     <!-- Top nav bar (fixed) -->
     <nav id="nav-bar">
@@ -30,15 +58,19 @@
     <!-- Page-specific (main) content here -->
     <main class="container">
       What is love baby dont hurt me
-      <p> Some temporary content</p>
       <section class="new-tweet">
           <h2>Compose Tweet</h2>
           <form action="/tweets" method="POST">
             <textarea name="text" placeholder="What are you humming about?"></textarea>
+            <br />
             <input type="submit"  value="Tweet">
             <span class="counter">140</span>
           </form>
         </section>
+
+        <div id="tweetContainer"> 
+            Your tweets here
+        </div>
     </main>
 
   </body>

@@ -1,10 +1,13 @@
 "use strict";
 
-const userHelper    = require("../lib/util/user-helper")
+const userHelper    = require("../../server/lib/util/user-helper")
 
 const express       = require('express');
 const tweetsRoutes  = express.Router();
 
+var initialTweets = require('../data-files/initial-tweets.json')
+
+console.log("initial tweets is " + JSON.stringify(initialTweets))
 module.exports = function(DataHelpers) {
 
   tweetsRoutes.get("/", function(req, res) {
@@ -18,6 +21,7 @@ module.exports = function(DataHelpers) {
   });
 
   tweetsRoutes.post("/", function(req, res) {
+    //console.log("received a tweet "+ JSON.stringify(req.body))
     if (!req.body.text) {
       res.status(400).json({ error: 'invalid request: no data in POST body'});
       return;
@@ -39,6 +43,9 @@ module.exports = function(DataHelpers) {
         res.status(201).send();
       }
     });
+    //Add our tweet to our tweet container
+    //let tweetContainer = $("#tweetContainer")
+    //console.log(tweetContainer)
   });
 
   return tweetsRoutes;
