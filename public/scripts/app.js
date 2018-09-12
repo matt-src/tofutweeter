@@ -19,13 +19,19 @@ const tweetData = {
     },
     "created_at": 1461116232227
   }
-
+function loadTweets(){
+    $.get("/tweets", function(res){
+       // alert("get worked")
+        console.log("result is " + JSON.stringify(res))
+        renderTweets(res)
+    })
+}
 function renderTweets(tweets){
+    console.log("received call to render tweets")
     for(i = 0; i < tweets.length; i++){
-        let newTweet = createTweetElement(tweets[i])
-        $('#tweets-container').append($tweet);
+        let $newTweet = createTweetElement(tweets[i])
+        $('#tweets-container').append($newTweet);
     }
-
 }
 function createTweetElement(tweet){
     let usr = tweet["user"];
@@ -53,3 +59,9 @@ function testFun(){
   console.log($tweet); // to see what it looks like
   $('#tweets-container').append($tweet); // to add it to the page so we can make sure it's got all the right elements, classes, etc.
 }
+//Escape string function from compass
+function escape(str) {
+    var div = document.createElement('div');
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  }

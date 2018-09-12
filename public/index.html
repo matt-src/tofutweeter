@@ -31,12 +31,24 @@
           //Add event handler to document to trigger when it is ready
         $(document).ready(function() {
         console.log("Our document is ready")
+        //LOAD TWEETS
+        loadTweets();
         //SUBMIT HANDLER
         $("#tweetForm").submit(function(e) {
         
         var form = $(this);
         var url = form.attr('action');
-
+        let charCount = $("textarea").val().length;
+        //Check if we have too many characters
+        if(charCount > 140){
+          alert("We have too many characters to post!")
+          return;
+        } //Check if we have too few characters
+        else if(charCount < 1){
+          alert("We have nothing to post!")
+        }
+        else{ //We have a valid tweet, let's post it
+        let dat = '';
         $.ajax({
               type: "POST",
               url: url,
@@ -44,16 +56,25 @@
               success: function(data)
               {
                 console.log('Submission was successful.');
-                alert(data); // show response from the php script.
+                renderTweets(data)
               },
-              error: function (data) {
+                error: function (data) {
                 console.log('An error occurred.');
                 console.log(data);
             },
-            });
-
+            })
+            .then(function(){
+              console.log("We have then'd")
+              console.log("Clearing html")
+              $('#tweets-container').empty()
+              //Reloading tweets
+              loadTweets()
+              //renderTweets(dat)
+            })
+          }
         e.preventDefault(); // avoid to execute the actual submit of the form.
         });
+        
           //TEXTAREA HANDLER
         $("textarea").keydown(function(event) {
         console.log("Keydown triggered");
@@ -69,12 +90,18 @@
         $(".counter").text(140 - tmp)
         })
       });
+
+      function toggleForm(){
+        console.log("Toggling tweets container")
+        $('#tweetForm').toggle()
+      }
       </script>
 
     <!-- Top nav bar (fixed) -->
     <nav id="nav-bar">
       <img class="logo" src="/images/bird.png">
       <span class="header" color="white">Tweeter</span>
+      <input id="compose" type="button" value="Compose" onclick="toggleForm()" />
     </nav>
 
     <!-- Page-specific (main) content here -->
