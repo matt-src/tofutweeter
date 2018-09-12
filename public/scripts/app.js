@@ -19,7 +19,14 @@ const tweetData = {
     },
     "created_at": 1461116232227
   }
-  
+
+function renderTweets(tweets){
+    for(i = 0; i < tweets.length; i++){
+        let newTweet = createTweetElement(tweets[i])
+        $('#tweets-container').append($tweet);
+    }
+
+}
 function createTweetElement(tweet){
     let usr = tweet["user"];
     let content = tweet["content"]
