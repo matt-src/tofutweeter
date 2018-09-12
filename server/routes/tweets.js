@@ -7,7 +7,7 @@ const tweetsRoutes  = express.Router();
 
 var initialTweets = require('../data-files/initial-tweets.json')
 
-console.log("initial tweets is " + JSON.stringify(initialTweets))
+//console.log("initial tweets is " + JSON.stringify(initialTweets))
 module.exports = function(DataHelpers) {
 
   tweetsRoutes.get("/", function(req, res) {

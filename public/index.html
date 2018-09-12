@@ -33,7 +33,7 @@
         console.log("Our document is ready")
 
         $("textarea").keydown(function(event) {
-        console.log("Keydown triggered"); 
+        console.log("Keydown triggered");
 
         let tmp = $("textarea").val().length;
         console.log("textlength is " + tmp)
@@ -45,7 +45,6 @@
         }
         $(".counter").text(140 - tmp)
         })
-        
       });
       </script>
 
@@ -64,11 +63,12 @@
             <textarea name="text" placeholder="What are you humming about?"></textarea>
             <br />
             <input type="submit"  value="Tweet">
+            <input id="clickMe" type="button" value="clickme" onclick="testFun();" />
             <span class="counter">140</span>
           </form>
         </section>
 
-        <div id="tweetContainer"> 
+        <div id="tweets-container"> 
             Your tweets here
         </div>
     </main>
