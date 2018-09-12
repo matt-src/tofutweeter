@@ -31,7 +31,30 @@
           //Add event handler to document to trigger when it is ready
         $(document).ready(function() {
         console.log("Our document is ready")
+        //SUBMIT HANDLER
+        $("#tweetForm").submit(function(e) {
+        
+        var form = $(this);
+        var url = form.attr('action');
 
+        $.ajax({
+              type: "POST",
+              url: url,
+              data: form.serialize(), // serializes the form's elements.
+              success: function(data)
+              {
+                console.log('Submission was successful.');
+                alert(data); // show response from the php script.
+              },
+              error: function (data) {
+                console.log('An error occurred.');
+                console.log(data);
+            },
+            });
+
+        e.preventDefault(); // avoid to execute the actual submit of the form.
+        });
+          //TEXTAREA HANDLER
         $("textarea").keydown(function(event) {
         console.log("Keydown triggered");
 
@@ -59,7 +82,7 @@
       What is love baby dont hurt me
       <section class="new-tweet">
           <h2>Compose Tweet</h2>
-          <form action="/tweets" method="POST">
+          <form action="/tweets" method="POST" id="tweetForm">
             <textarea name="text" placeholder="What are you humming about?"></textarea>
             <br />
             <input type="submit"  value="Tweet">
