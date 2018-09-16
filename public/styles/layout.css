@@ -39,6 +39,40 @@ main {
   font-style: bold;
 }
 
+.tweetHead {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  border-style: solid;
+  border-color: black;
+}
+.tweetHead .name {
+  font-style: bold;
+  font-size: 1.5em;
+}
+.tweetHead .handle {
+  text-align: right;
+  align-self: flex-start;
+  margin-left: 30px;
+}
+
+.tweetBody {
+  align-self: flex-start;
+  text-align: left;
+}
+
+.tweetFooter .created {
+  text-align: left;
+  align-self: flex-start;
+}
+
+.tweet {
+  display: flex;
+  flex-direction: column;
+  border-style: solid;
+  border-color: #00a087;
+}
+
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */

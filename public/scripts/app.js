@@ -34,6 +34,7 @@ function loadTweets(){
         $composeButton.css("background-color", "white");
     })
 }
+
 function renderTweets(tweets){
     console.log("received call to render tweets")
     for(i = 0; i < tweets.length; i++){
@@ -47,28 +48,34 @@ function createTweetElement(tweet){
     let created = tweet["created_at"];
     let imgURL = usr.avatars.small;
     let handle = usr.handle;
+    let name = usr.name;
     let img = "<img src=\"" + imgURL + "\" >";
     console.log(img)
     let $result = $("<article>").addClass("tweet");
-    let $tweetHead = $('<article></article>');
-    let $tweetBody = $('<article></article>');
-    let $tweetFooter = $('<article></article>');
-    let $avatar = $("<span>" + img + usr.name + "</span>");
-    let $handle = $("<span> " + handle + " </span>");
-    
-    $tweetHead.append($avatar);
-    $tweetHead.append($handle);
+    let $tweetHead = $('<header></header>').addClass("tweetHead");
+    let $tweetBody = $('<article></article>').addClass("tweetBody");
+    let $tweetFooter = $('<footer></footer>').addClass("tweetFooter");
+    let $avatar = $("<span>" + img + "</span>").addClass("avatar");
+    let $created = $("<article>" + created + "</article>").addClass("created");
     $avatar.css({"padding-right": "5px"});
-    $avatar.css({"float": "left"});
+    let $name = $("<span> " + name + " </span>").addClass("name");
+    let $handle = $("<span> " + handle + " </span>").addClass("handle");
+    $tweetHead.append($avatar);
+    $tweetHead.append($name);
+    $tweetHead.append($handle);
     $result.append($tweetHead);
     $tweetBody.append("<span>" + content.text + "</span>")
     $result.append($tweetBody)
-    $tweetFooter.append("<footer>" + created + "</footer></br>")
+    $tweetFooter.append($created)
+    $result.append($tweetFooter);
     $result.hover(function(){
-        $result.css("border-style", "solid");
+        $result.css("border-style", "double");
+        $result.css("border-color", "black") ;
+        $result.css("border-width", "5px") ;
     },
     function(){
-        $result.css("border-style", "none") ;
+        $result.css("border-style", "solid") ;
+        $result.css("border-width", "1px") ;
     })
     return $result;
 }
