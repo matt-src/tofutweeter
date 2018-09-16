@@ -1,0 +1,27 @@
+$white: #e8fdff;
+$background-color: #00a087;
+$default-height: 80px;
+//$test-color: #FF0000;
+
+#nav-bar {
+    color: $white;
+    height: $default-height;
+    width: 100%;
+    padding-left: 2em;
+    padding-right: 2em;
+    background-color: $background-color;
+}
+
+#nav-bar .logo {
+    float: left;
+    height: $default-height;
+    width: 80px;
+}
+
+#nav-bar .header {
+    line-height: $default-height;
+    padding: 0px 0px 10px;
+    font-size: 200%;
+    float: left;
+    vertical-align: middle;
+}
