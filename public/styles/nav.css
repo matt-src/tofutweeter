@@ -18,5 +18,12 @@
   float: left;
   vertical-align: middle;
 }
+#nav-bar #compose {
+  line-height: 40px;
+  float: right;
+  vertical-align: middle;
+  border-radius: 25px;
+  border-style: solid;
+}
 
 /*# sourceMappingURL=nav.css.map */

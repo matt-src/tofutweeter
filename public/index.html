@@ -93,7 +93,7 @@
 
       function toggleForm(){
         console.log("Toggling tweets container")
-        $('#tweetForm').toggle()
+        $('.new-tweet').toggle()
       }
       </script>
 
@@ -106,20 +106,16 @@
 
     <!-- Page-specific (main) content here -->
     <main class="container">
-      What is love baby dont hurt me
       <section class="new-tweet">
-          <h2>Compose Tweet</h2>
+          <h2 class="composeTweetLabel">Compose Tweet</h2>
           <form action="/tweets" method="POST" id="tweetForm">
-            <textarea name="text" placeholder="What are you humming about?"></textarea>
-            <br />
-            <input type="submit"  value="Tweet">
-            <input id="clickMe" type="button" value="clickme" onclick="testFun();" />
+            <textarea id="tweetText" name="text" placeholder="What are you humming about?"></textarea>
+            <input id="tweetButton" type="submit"  value="Tweet">
             <span class="counter">140</span>
           </form>
         </section>
 
         <div id="tweets-container"> 
-            Your tweets here
         </div>
     </main>
 

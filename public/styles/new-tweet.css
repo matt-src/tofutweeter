@@ -1,5 +1,31 @@
 .new-tweet {
+  display: flex;
+  flex-direction: column;
+  border-radius: 25px;
   border-style: solid;
+  align-self: right;
+  background-color: #D3D3D3;
+}
+.new-tweet #tweetForm {
+  width: 100%;
+  padding: 0em 2em;
+}
+.new-tweet #tweetButton {
+  float: left;
+}
+.new-tweet #tweetText {
+  width: 100%;
+}
+.new-tweet .composeTweetLabel {
+  text-align: left;
+  border-bottom: 1px solid black;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+.new-tweet .counter {
+  align-self: right;
+  text-align: right;
+  float: right;
 }
 
 /*# sourceMappingURL=new-tweet.css.map */

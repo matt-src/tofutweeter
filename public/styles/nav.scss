@@ -25,4 +25,12 @@ $default-height: 80px;
         vertical-align: middle;
     }
 
+    #compose {
+        line-height: $default-height/2;
+        float: right;
+        vertical-align: middle;
+        border-radius: 25px;
+        border-style: solid;
+    }
+
 }

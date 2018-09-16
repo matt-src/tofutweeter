@@ -20,21 +20,14 @@
     margin: 0;
     color: #244751;
     background-color: #eee;
-    
+    //flex-direction: column;  
   }
   
   main {
     width: 450px;
     text-align: center;
-    background-color: #eee;
-    display: flex;
-    flex-direction: column;
-
-    .item {
-        align-self: center;
-    }
-
-  }
+    background-color: #eee; 
+}
   
   /*
    * Additional CSS can be defined below or in other CSS files, as per instructions
