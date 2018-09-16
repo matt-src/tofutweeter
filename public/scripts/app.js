@@ -43,30 +43,36 @@ function renderTweets(tweets){
 }
 function createTweetElement(tweet){
     let usr = tweet["user"];
-    let content = tweet["content"]
-    let created = tweet["created_at"]
+    let content = tweet["content"];
+    let created = tweet["created_at"];
     let imgURL = usr.avatars.small;
-    let img = "<img src=\"" + imgURL + "\" >"
+    let handle = usr.handle;
+    let img = "<img src=\"" + imgURL + "\" >";
     console.log(img)
-    let $result = $("<article>").addClass("tweet")
-    $result.append("<header>" + img + usr.name + "</header></br>")
-    $result.append("<span>" + content.text + "</span></br>")
-    $result.append("<footer>" + created + "</footer></br>")
+    let $result = $("<article>").addClass("tweet");
+    let $tweetHead = $('<article></article>');
+    let $tweetBody = $('<article></article>');
+    let $tweetFooter = $('<article></article>');
+    let $avatar = $("<span>" + img + usr.name + "</span>");
+    let $handle = $("<span> " + handle + " </span>");
+    
+    $tweetHead.append($avatar);
+    $tweetHead.append($handle);
+    $avatar.css({"padding-right": "5px"});
+    $avatar.css({"float": "left"});
+    $result.append($tweetHead);
+    $tweetBody.append("<span>" + content.text + "</span>")
+    $result.append($tweetBody)
+    $tweetFooter.append("<footer>" + created + "</footer></br>")
     $result.hover(function(){
-        $result.css("border-style", "solid")
+        $result.css("border-style", "solid");
     },
     function(){
-        $result.css("border-style", "none") 
+        $result.css("border-style", "none") ;
     })
     return $result;
 }
-function testFun(){
-  var $tweet = createTweetElement(tweetData);
-  
-  // Test / driver code (temporary)
-  console.log($tweet); // to see what it looks like
-  $('#tweets-container').append($tweet); // to add it to the page so we can make sure it's got all the right elements, classes, etc.
-}
+
 //Escape string function from compass
 function escape(str) {
     var div = document.createElement('div');
