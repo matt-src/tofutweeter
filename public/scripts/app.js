@@ -25,6 +25,14 @@ function loadTweets(){
         console.log("result is " + JSON.stringify(res))
         renderTweets(res)
     })
+    //Attach handler to compose button
+    let $composeButton = $("#compose");
+    $composeButton.hover(function(){
+        $composeButton.css("background-color", "aqua");
+    },
+    function(){
+        $composeButton.css("background-color", "white");
+    })
 }
 function renderTweets(tweets){
     console.log("received call to render tweets")

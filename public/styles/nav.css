@@ -19,7 +19,15 @@
   vertical-align: middle;
 }
 #nav-bar #compose {
-  line-height: 40px;
+  margin-top: 10px;
+  height: 60px;
+  width: 120px;
+  font-size: 20px;
+  font-weight: bold;
+  color: black;
+  background-color: white;
+  line-height: 60px;
+  text-align: center;
   float: right;
   vertical-align: middle;
   border-radius: 25px;

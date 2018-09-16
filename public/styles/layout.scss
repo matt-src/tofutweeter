@@ -26,8 +26,20 @@
   main {
     width: 450px;
     text-align: center;
+    align-self: center;
     background-color: #eee; 
-}
+  }
+
+  .container {
+    display: flex;  
+    flex-direction: column;
+  }
+
+    #error-box {
+        font-size: 3em;
+        color: red;
+        font-style: bold;
+    }
   
   /*
    * Additional CSS can be defined below or in other CSS files, as per instructions
