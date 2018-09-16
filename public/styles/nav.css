@@ -6,13 +6,11 @@
   padding-right: 2em;
   background-color: #00a087;
 }
-
 #nav-bar .logo {
   float: left;
   height: 80px;
   width: 80px;
 }
-
 #nav-bar .header {
   line-height: 80px;
   padding: 0px 0px 10px;

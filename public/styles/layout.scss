@@ -26,7 +26,14 @@
   main {
     width: 450px;
     text-align: center;
-    background-color: #eee
+    background-color: #eee;
+    display: flex;
+    flex-direction: column;
+
+    .item {
+        align-self: center;
+    }
+
   }
   
   /*
