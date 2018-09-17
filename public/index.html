@@ -31,9 +31,10 @@
       <script>
           //Add event handler to document to trigger when it is ready
         $(document).ready(function() {
-        console.log("Our document is ready")
         //LOAD TWEETS
         loadTweets();
+        //HIDE TWEET COMPOSE FORM BY DEFAULT
+        $('.new-tweet').toggle();
         //SUBMIT HANDLER
         $("#tweetForm").submit(function(e) {
         
@@ -60,23 +61,17 @@
               data: form.serialize(), // serializes the form's elements.
               success: function(data)
               {
-                console.log('Submission was successful.');
-                renderTweets(data)
+                renderTweets(data) //POST submission was successful, let's render the tweets we received
               },
                 error: function (data) {
-                console.log('An error occurred.');
-                console.log(data);
                 let $err = $('<div></div>').text("An error occured while trying to POST to the server")
-                $('#error-box').append($err);
+                $('#error-box').append($err); 
             },
             })
             .then(function(){
-              console.log("We have then'd")
-              console.log("Clearing html")
               $('#tweets-container').empty()
               //Reloading tweets
               loadTweets()
-              //renderTweets(dat)
             })
           }
         e.preventDefault(); // avoid to execute the actual submit of the form.
@@ -84,10 +79,8 @@
         
           //TEXTAREA HANDLER
         $("textarea").keydown(function(event) {
-        console.log("Keydown triggered");
 
         let tmp = $("textarea").val().length;
-        console.log("textlength is " + tmp)
         if((140 - tmp) < 0){
           $(".counter").css("color", "red")
         }
@@ -97,10 +90,10 @@
         $(".counter").text(140 - tmp)
         })
       });
-
+      //Toggle the new tweet composing element
       function toggleForm(){
-        console.log("Toggling tweets container")
-        $('.new-tweet').toggle()
+        $('.new-tweet').toggle();
+        $('#tweetText').focus();
       }
       </script>
 

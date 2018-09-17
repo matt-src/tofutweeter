@@ -21,8 +21,6 @@ const tweetData = {
   }
 function loadTweets(){
     $.get("/tweets", function(res){
-       // alert("get worked")
-        console.log("result is " + JSON.stringify(res))
         renderTweets(res)
     })
     //Attach handler to compose button
@@ -36,7 +34,6 @@ function loadTweets(){
 }
 
 function renderTweets(tweets){
-    console.log("received call to render tweets")
     for(i = 0; i < tweets.length; i++){
         let $newTweet = createTweetElement(tweets[i])
         $('#tweets-container').append($newTweet);
@@ -77,14 +74,12 @@ function createTweetElement(tweet){
         $result.css("border-color", "black") ;
         $result.css("border-width", "5px") ;
         $emojis.show();
-        console.log('Displaying emojis')
     },
     function(){
         $result.css("border-style", "solid") ;
         $result.css("border-width", "auto") ;
         $result.css("border-color", "#00a087");
         $emojis.hide();
-        console.log("Hiding emojis")
 
     })
     return $result;
