@@ -44,7 +44,16 @@ main {
   flex-direction: row;
   align-items: flex-start;
   border-style: solid;
+  border-radius: 25px;
   border-color: black;
+  background-color: #D3D3D3;
+}
+.tweetHead .avatar {
+  margin-top: 5px;
+  margin-left: 10px;
+}
+.tweetHead .avatar img {
+  height: 20%;
 }
 .tweetHead .name {
   font-style: bold;
@@ -57,11 +66,17 @@ main {
 }
 
 .tweetBody {
+  margin-bottom: 10px;
+  margin-left: 10px;
   align-self: flex-start;
   text-align: left;
+  background-color: white;
+  border-bottom: solid;
+  width: 80%;
 }
 
 .tweetFooter .created {
+  margin-left: 10px;
   text-align: left;
   align-self: flex-start;
 }
@@ -69,6 +84,8 @@ main {
 .tweet {
   display: flex;
   flex-direction: column;
+  margin-bottom: 10px;
+  border-radius: 25px;
   border-style: solid;
   border-color: #00a087;
 }

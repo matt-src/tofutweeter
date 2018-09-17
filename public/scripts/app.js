@@ -46,6 +46,8 @@ function createTweetElement(tweet){
     let usr = tweet["user"];
     let content = tweet["content"];
     let created = tweet["created_at"];
+    let timeCreated = new Date(created)
+    let formattedTime = formatTime(timeCreated);
     let imgURL = usr.avatars.small;
     let handle = usr.handle;
     let name = usr.name;
@@ -56,7 +58,7 @@ function createTweetElement(tweet){
     let $tweetBody = $('<article></article>').addClass("tweetBody");
     let $tweetFooter = $('<footer></footer>').addClass("tweetFooter");
     let $avatar = $("<span>" + img + "</span>").addClass("avatar");
-    let $created = $("<article>" + created + "</article>").addClass("created");
+    let $created = $("<article>" + formatTime(timeCreated) + "</article>").addClass("created");
     $avatar.css({"padding-right": "5px"});
     let $name = $("<span> " + name + " </span>").addClass("name");
     let $handle = $("<span> " + handle + " </span>").addClass("handle");
@@ -75,11 +77,23 @@ function createTweetElement(tweet){
     },
     function(){
         $result.css("border-style", "solid") ;
-        $result.css("border-width", "1px") ;
+        $result.css("border-width", "auto") ;
+        $result.css("border-color", "#00a087");
     })
     return $result;
 }
 
+function formatTime(date){
+    if(date.getDay() > 1){
+        return "" + date.getDay() + " days ago";
+    }
+    else if(date.getHours(date) > 1) {
+        return "" + date.getHours() + " hours ago";
+    }
+    else if(date.getMinutes(date) > 1){
+        return "" + date.getMinutes() + "minutes ago";
+    }
+}
 //Escape string function from compass
 function escape(str) {
     var div = document.createElement('div');
