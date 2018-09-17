@@ -75,10 +75,18 @@ main {
   width: 80%;
 }
 
+.tweetFooter {
+  display: flex;
+  flex-direction: row;
+}
 .tweetFooter .created {
   margin-left: 10px;
   text-align: left;
   align-self: flex-start;
+}
+.tweetFooter .emojis {
+  margin-left: 50px;
+  font-size: 200%;
 }
 
 .tweet {

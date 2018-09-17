@@ -52,7 +52,6 @@ function createTweetElement(tweet){
     let handle = usr.handle;
     let name = usr.name;
     let img = "<img src=\"" + imgURL + "\" >";
-    console.log(img)
     let $result = $("<article>").addClass("tweet");
     let $tweetHead = $('<header></header>').addClass("tweetHead");
     let $tweetBody = $('<article></article>').addClass("tweetBody");
@@ -62,23 +61,31 @@ function createTweetElement(tweet){
     $avatar.css({"padding-right": "5px"});
     let $name = $("<span> " + name + " </span>").addClass("name");
     let $handle = $("<span> " + handle + " </span>").addClass("handle");
+    let $emojis = $("<span>🏴</span><span>♻️</span><span>💕</span>").addClass("emojis");
+    $emojis.hide();
     $tweetHead.append($avatar);
     $tweetHead.append($name);
     $tweetHead.append($handle);
     $result.append($tweetHead);
-    $tweetBody.append("<span>" + content.text + "</span>")
-    $result.append($tweetBody)
-    $tweetFooter.append($created)
+    $tweetBody.append("<span>" + content.text + "</span>");
+    $result.append($tweetBody);
+    $tweetFooter.append($created);
+    $tweetFooter.append($emojis);
     $result.append($tweetFooter);
     $result.hover(function(){
         $result.css("border-style", "double");
         $result.css("border-color", "black") ;
         $result.css("border-width", "5px") ;
+        $emojis.show();
+        console.log('Displaying emojis')
     },
     function(){
         $result.css("border-style", "solid") ;
         $result.css("border-width", "auto") ;
         $result.css("border-color", "#00a087");
+        $emojis.hide();
+        console.log("Hiding emojis")
+
     })
     return $result;
 }
