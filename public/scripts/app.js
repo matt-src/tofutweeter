@@ -22,7 +22,7 @@ function loadTweets(){
 function renderTweets(tweets){
 	for(i = 0; i < tweets.length; i++){
 		let $newTweet = createTweetElement(tweets[i]);
-		$('#tweets-container').append($newTweet);
+		$('#tweets-container').prepend($newTweet);
 	}
 }
 
